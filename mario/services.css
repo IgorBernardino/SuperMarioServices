@@ -191,18 +191,15 @@ textarea {
     color: #666;
 }
 
-.coin-container {
-    position: relative;
-    /* Ajuste a posição do contêiner conforme necessário */
-}
+/* Bug 8 corrigido: removida classe .coin-container que estava Ã³rfÃ£ (nunca usada no HTML) */
 
 .coin {
     position: absolute;
-    top: -30px; /* Coloca a moeda acima da caixa */
+    top: -30px;
     left: 50%;
     transform: translate(-50%, 50%);
-    width: 30px; /* Ajuste o tamanho da moeda conforme necessário */
-    height: auto; /* Mantém a proporção da imagem GIF */
+    width: 30px;
+    height: auto;
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.5s ease;
     z-index: 10;
@@ -212,9 +209,8 @@ textarea {
 
 .show-coin {
     opacity: 1;
-    transform: translate(-50%, -100%) scale(1.5); /* Faz a moeda "saltar" */
+    transform: translate(-50%, -100%) scale(1.5);
 }
-
 
 @media (max-width: 1000px) {
     .service-grid {
