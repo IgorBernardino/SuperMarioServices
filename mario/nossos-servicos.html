@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -21,101 +21,107 @@
     <header>
         <img src="./assets/logo-header.png" class="logo-header" />
         <a href="./index.html">Home</a>
-        <a href="./nossos-servicos.html">Nossos Serviços</a>
-        <a onclick="showForm()">Fale Conosco</a> 
+        <a href="./nossos-servicos.html">Nossos ServiÃ§os</a>
+        <a onclick="showForm()">Fale Conosco</a>
     </header>
 
     <div class="container">
         <div class="background">
-            <video loop autoplay muted class="conteudo-background ">
+            <video loop autoplay muted class="conteudo-background">
                 <source src="./assets/video.mp4">
             </video>
             <!-- <img src="./assets/backgroud.jpeg" class="conteudo-background"/> -->
             <div class="mascara-video"></div>
         </div>
-                
+
         <div class="sobre-nos">
             <img src="./assets/logo.png" class="logo">
             <p>
-                🔧 Nossos Serviços 🔧
+                ðŸ”§ Nossos ServiÃ§os ðŸ”§
             </p>
             <br>
             <div class="service-section">
                 <div class="service-grid">
                     <div class="service-box">
-                        <img src="./assets/serviços/reparo-tubulacao.PNG" alt="Reparo de Tubulação">
-                        <h2>Reparo de Tubulação</h2>
+                        <img src="./assets/serviÃ§os/reparo-tubulacao.PNG" alt="Reparo de TubulaÃ§Ã£o">
+                        <h2>Reparo de TubulaÃ§Ã£o</h2>
                         <p>Conserte vazamentos e danos nos canos.</p>
-                        <img class="coin" src="./assets/serviços/coin-transp.gif" alt="Moeda girando">
+                        <img class="coin" src="./assets/serviÃ§os/coin-transp.gif" alt="Moeda girando">
                     </div>
                     <div class="service-box">
-                        <img src="./assets/serviços/desentupir.PNG" alt="Desentupimento de Drenos">
+                        <img src="./assets/serviÃ§os/desentupir.PNG" alt="Desentupimento de Drenos">
                         <h2>Desentupimento de Drenos</h2>
-                        <p>Desobstrução rápida e eficaz.</p>
-                        <img class="coin" src="./assets/serviços/coin-transp.gif" alt="Moeda girando">
+                        <p>DesobstruÃ§Ã£o rÃ¡pida e eficaz.</p>
+                        <img class="coin" src="./assets/serviÃ§os/coin-transp.gif" alt="Moeda girando">
                     </div>
                     <div class="service-box">
-                        <img src="./assets/serviços/vazamento.PNG" alt="Conserto de Vazamentos">
+                        <img src="./assets/serviÃ§os/vazamento.PNG" alt="Conserto de Vazamentos">
                         <h2>Conserto de Vazamentos</h2>
-                        <p>Resolva problemas de vazamentos de água.</p>
-                        <img class="coin" src="./assets/serviços/coin-transp.gif" alt="Moeda girando">
+                        <p>Resolva problemas de vazamentos de Ã¡gua.</p>
+                        <img class="coin" src="./assets/serviÃ§os/coin-transp.gif" alt="Moeda girando">
                     </div>
                     <div class="service-box">
-                        <img src="./assets/serviços/instalacao.PNG" alt="Instalação de Banheiro">
-                        <h2>Instalação de Banheiro</h2>
+                        <img src="./assets/serviÃ§os/instalacao.PNG" alt="InstalaÃ§Ã£o de Banheiro">
+                        <h2>InstalaÃ§Ã£o de Banheiro</h2>
                         <p>Montagem completa de banheiros.</p>
-                        <img class="coin" src="./assets/serviços/coin-transp.gif" alt="Moeda girando">
+                        <img class="coin" src="./assets/serviÃ§os/coin-transp.gif" alt="Moeda girando">
                     </div>
                 </div>
-            </div>            
+            </div>
             <button onclick="showForm()">Entre em Contato</button>
         </div>
 
         <img src="./assets/mario.png" class="mario">
-        <a class="whatsapp"><img src="./assets/whatsapp.png" /></a>
+
+        <!-- Bug 1 corrigido: adicionado href com link do WhatsApp e target="_blank" -->
+        <a class="whatsapp" href="https://wa.me/55SEU_NUMERO" target="_blank">
+            <img src="./assets/whatsapp.png" />
+        </a>
 
         <form action="https://formsubmit.co/igorsbs27@gmail.com" method="POST" class="fale-conosco">
             <input type="text" name="name" placeholder="Seu Nome" required>
-            <input type="email" name="email" placeholder="Telefone" required>
-            <textarea type="text" placeholder="Digite seu problema"></textarea>
-            <button type="submit">Pedir Orçamento</button>
+            <!-- Bug 2 corrigido: type="tel" e name="telefone" para campo de telefone -->
+            <input type="tel" name="telefone" placeholder="Telefone" required>
+            <!-- Bug 5 corrigido: removido atributo type invÃ¡lido do textarea -->
+            <textarea placeholder="Digite seu problema"></textarea>
+            <button type="submit">Pedir OrÃ§amento</button>
         </form>
-    </div>
+
+    <!-- Bug 3 corrigido: script movido para dentro do body, antes do fechamento -->
+    <script>
+        const form = document.querySelector('.fale-conosco')
+        const background = document.querySelector('.mascara-form')
+
+        function showForm() {
+            form.style.left = '50%'
+            form.style.transform = 'translateX(-50%)'
+            background.style.visibility = 'visible'
+        }
+
+        function hideForm() {
+            form.style.left = '-330px'
+            form.style.transform = 'translateX(0)'
+            background.style.visibility = 'hidden'
+        }
+
+        const serviceBoxes = document.querySelectorAll('.service-box');
+
+        serviceBoxes.forEach(serviceBox => {
+            serviceBox.addEventListener('mouseenter', function() {
+                const coin = this.querySelector('.coin');
+                if (coin) {
+                    coin.classList.add('show-coin');
+                }
+            });
+
+            serviceBox.addEventListener('mouseleave', function() {
+                const coin = this.querySelector('.coin');
+                if (coin) {
+                    coin.classList.remove('show-coin');
+                }
+            });
+        });
+    </script>
 </body>
-<script>
-    const form = document.querySelector('.fale-conosco')
-    const background = document.querySelector('.mascara-form')
-
-    function showForm() {
-        form.style.left = '50%'
-        form.style.transform = 'translateX(-50%)'
-        background.style.visibility = 'visible'
-    }
-
-    function hideForm() {
-        form.style.left = '-330px'
-        form.style.transform = 'translateX(0)'
-        background.style.visibility = 'hidden'
-    }
-
-    const serviceBoxes = document.querySelectorAll('.service-box');
-
-    serviceBoxes.forEach(serviceBox => {
-        serviceBox.addEventListener('mouseenter', function() {
-            const coin = this.querySelector('.coin');
-            if (coin) {
-                coin.classList.add('show-coin');
-            }
-        });
-    
-        serviceBox.addEventListener('mouseleave', function() {
-            const coin = this.querySelector('.coin');
-            if (coin) {
-                coin.classList.remove('show-coin');
-            }
-        });
-    });
-    
-</script>
 
 </html>
