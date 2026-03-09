@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -21,59 +21,66 @@
     <header>
         <img src="./assets/logo-header.png" class="logo-header" />
         <a href="./index.html">Home</a>
-        <a href="./nossos-servicos.html">Nossos Serviços</a>
-        <a onclick="showForm()">Fale Conosco</a>  
+        <a href="./nossos-servicos.html">Nossos ServiÃ§os</a>
+        <a onclick="showForm()">Fale Conosco</a>
     </header>
 
     <div class="container">
         <div class="background">
-            <video loop autoplay muted class="conteudo-background ">
+            <video loop autoplay muted class="conteudo-background">
                 <source src="./assets/video.mp4">
             </video>
             <!-- <img src="./assets/backgroud.jpeg" class="conteudo-background"/> -->
             <div class="mascara-video"></div>
         </div>
-                
+
         <div class="sobre-nos">
             <img src="./assets/logo.png" class="logo">
             <p>
-                🔧 Encanadores Mario & Luigi - Resolvendo Seus Problemas Hidráulicos Com Estilo! 🔧
+                ðŸ”§ Encanadores Mario & Luigi - Resolvendo Seus Problemas HidrÃ¡ulicos Com Estilo! ðŸ”§
             </p>
             <br>
             <p>
-                Você já se encontrou em uma situação de emergência com encanamento? Vazamentos inesperados, canos
-                entupidos ou torneiras que não param de pingar? Não se preocupe, porque estamos aqui para salvar o dia!
-                Apresentamos a vocês os encanadores mais famosos do Reino dos Cogumelos - Mario e Luigi!
+                VocÃª jÃ¡ se encontrou em uma situaÃ§Ã£o de emergÃªncia com encanamento? Vazamentos inesperados, canos
+                entupidos ou torneiras que nÃ£o param de pingar? NÃ£o se preocupe, porque estamos aqui para salvar o dia!
+                Apresentamos a vocÃªs os encanadores mais famosos do Reino dos Cogumelos - Mario e Luigi!
             </p>
             <button onclick="showForm()">Entre em Contato</button>
         </div>
 
         <img src="./assets/mario.png" class="mario">
-        <a class="whatsapp"><img src="./assets/whatsapp.png" /></a>
+
+        <!-- Bug 1 corrigido: adicionado href com link do WhatsApp e target="_blank" -->
+        <a class="whatsapp" href="https://wa.me/55SEU_NUMERO" target="_blank">
+            <img src="./assets/whatsapp.png" />
+        </a>
 
         <form action="https://formsubmit.co/contato@rodolfomori.com" method="POST" class="fale-conosco">
             <input type="text" name="name" placeholder="Seu Nome" required>
-            <input type="email" name="email" placeholder="Telefone" required>
-            <textarea type="text" placeholder="Digite seu problema"></textarea>
-            <button type="submit">Pedir Orçamento</button>
+            <!-- Bug 2 corrigido: type="tel" e name="telefone" para campo de telefone -->
+            <input type="tel" name="telefone" placeholder="Telefone" required>
+            <!-- Bug 5 corrigido: removido atributo type invÃ¡lido do textarea -->
+            <textarea placeholder="Digite seu problema"></textarea>
+            <button type="submit">Pedir OrÃ§amento</button>
         </form>
-    </div>
+
+    <!-- Bug 3 corrigido: script movido para dentro do body, antes do fechamento -->
+    <script>
+        const form = document.querySelector('.fale-conosco')
+        const background = document.querySelector('.mascara-form')
+
+        function showForm() {
+            form.style.left = '50%'
+            form.style.transform = 'translateX(-50%)'
+            background.style.visibility = 'visible'
+        }
+
+        function hideForm() {
+            form.style.left = '-330px'
+            form.style.transform = 'translateX(0)'
+            background.style.visibility = 'hidden'
+        }
+    </script>
 </body>
-<script>
-    const form = document.querySelector('.fale-conosco')
-    const background = document.querySelector('.mascara-form')
-
-    function showForm() {
-        form.style.left = '50%'
-        form.style.transform = 'translateX(-50%)'
-        background.style.visibility = 'visible'
-    }
-
-    function hideForm() {
-        form.style.left = '-330px'
-        form.style.transform = 'translateX(0)'
-        background.style.visibility = 'hidden'
-    }
-</script>
 
 </html>
